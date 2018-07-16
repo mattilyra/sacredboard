@@ -18,6 +18,8 @@ filters = Blueprint("filters", __name__)
 @filters.app_template_filter("format_datetime")
 def format_datetime(value):
     """Format datetime according to server's locale."""
+    if value is None:
+        value = datetime.datetime.fromtimestamp(0)
     return value.strftime('%X %x')
 
 
